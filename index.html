@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pengirim Pesan WhatsApp</title>
+    <style>
+        /* Gaya CSS untuk formulir */
+        form {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="sendMessageForm">
+        <label for="phone">Nomor Telepon Tanpa 0:</label>
+        <input type="text" id="phone" name="phone"><br><br>
+        <label for="message">Nama:</label>
+        <textarea id="message" name="message"></textarea><br><br>
+        <button type="button" onclick="sendMessage()">Kirim</button>
+    </form>
+
+    <script>
+        function sendMessage() {
+            var phoneNumber = document.getElementById("phone").value;
+            var message = document.getElementById("message").value;
+            var situs = encodeSpaces(message);
+            var whatsappUrl = "https://api.whatsapp.com/send?phone=%2B62" + phoneNumber + "&text=Kepada%20Yth.%0ABapak%2FIbu%2FSaudara%2Fi%0A" + encodeURIComponent(message) + "%0A%0A%E2%80%8E%D8%A7%D9%84%D8%B3%D9%8E%D9%91%D9%84%D8%A7%D9%8E%D9%85%D9%8F%20%D8%B9%D9%8E%D9%84%D9%8E%D9%8A%D9%92%D9%83%D9%8F%D9%85%D9%92%20%D9%88%D9%8E%D8%B1%D9%8E%D8%AD%D9%92%D9%85%D9%8E%D8%A9%D9%8F%20%D8%A7%D9%84%D9%84%D9%87%D9%90%20%D9%88%D9%8E%D8%A8%D9%8E%D8%B1%D9%8E%D9%83%D9%8E%D8%A7%D8%AA%D9%8F%D9%87%D9%8F%20%0A%0ATanpa%20mengurangi%20rasa%20hormat%2C%20perkenankan%20kami%20mengundang%20Bapak%2FIbu%2FSaudara%2Fi%20untuk%20menghadiri%20acara%20pernikahan%20kami%3A%0A%0A%F0%9F%A4%B4%F0%9F%8F%BB%20Dwika%20Nove%20Rahmanto%2C%20S.T%0A%F0%9F%AB%85%F0%9F%8F%BC%20Erna%20Sari%20Susanti%2C%20S.Sos%0A%0ABerikut%20link%20undangan%20kami%2C%20untuk%20info%20lengkap%20dari%20acara%20bisa%20kunjungi%20%3A%0A%0Ahttps%3A%2F%2Fdwikanov.github.io%2Fnikahan%2F%3Fname%3D"
+                + situs + "%0A%0AMerupakan%20suatu%20kehormatan%20dan%20kebahagiaan%20bagi%20kami%20apabila%20Bapak%2FIbu%2FSaudara%2Fi%20berkenan%20untuk%20hadir%20dan%20memberikan%20doa%20restu.%0A%0AMohon%20maaf%20perihal%20undangan%20hanya%20dibagikan%20melalui%20pesan%20ini.%0A%0A%E2%80%8E%D9%88%D9%8E%D8%A7%D9%84%D8%B3%D9%8E%D9%91%D9%84%D8%A7%D9%8E%D9%85%D9%8F%20%D8%B9%D9%8E%D9%84%D9%8E%D9%8A%D9%92%D9%83%D9%8F%D9%85%D9%92%20%D9%88%D9%8E%D8%B1%D9%8E%D8%AD%D9%92%D9%85%D9%8E%D8%A9%D9%8F%20%D8%A7%D9%84%D9%84%D9%87%D9%90%20%D9%88%D9%8E%D8%A8%D9%8E%D8%B1%D9%8E%D9%83%D9%8E%D8%A7%D8%AA%D9%8F%D9%87%D9%8F%0A%0AKami%20yang%20berbahagia%2C%0AErna%20%26%20Dwika";
+            window.location.href = whatsappUrl;
+        }
+        function encodeSpaces(str) {
+            // Mengganti semua spasi dengan %20
+            return str.replace(/ /g, '%2520');
+        }
+    </script>
+</body>
+
+</html>
