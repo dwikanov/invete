@@ -54,11 +54,11 @@
             margin-bottom: 5px;
         }
 
-        input[type="text"],
-        textarea {
-            padding: 10px;
+        input[type="text"] {
+            font-size: medium;
+            padding: auto 10px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: auto 5px;
             width: 100%;
             /* Make input elements take full width on mobile */
         }
@@ -90,7 +90,7 @@
             <label for="phone">Nomor Telepon</label>
             <input type="text" id="nomor" name="Nomor" placeholder="Nomor"><br><br>
             <label for="nama">Nama:</label>
-            <textarea id="nama" name="Nama" placeholder="Nama"></textarea><br><br>
+            <input type="text" id="nama" name="Nama" placeholder="Nama"><br><br>
             <input type="submit" id="submit" value="Kirim"><br><br>
             <label for="nama">↓ Salin Manual ↓</label>
             <input type="button" id="copyMessage" value="Salin Pesan">
@@ -105,7 +105,8 @@
 
         form.addEventListener('submit', e => {
             e.preventDefault()
-            var phoneNumber = document.getElementById("nomor").value;
+            var nombor = document.getElementById("nomor").value;
+            var phoneNumber = nombor.replace(/^\+62/, '0');
             var message = document.getElementById("nama").value;
             var situs = encodeSpaces(message);
             var variasi = "Kepada%20Yth.%0ABapak%2FIbu%2FSaudara%2Fi%0A%2A" + encodeURIComponent(message) + "%2A%0A%0A%E2%80%8E%D8%A7%D9%84%D8%B3%D9%8E%D9%91%D9%84%D8%A7%D9%8E%D9%85%D9%8F%20%D8%B9%D9%8E%D9%84%D9%8E%D9%8A%D9%92%D9%83%D9%8F%D9%85%D9%92%20%D9%88%D9%8E%D8%B1%D9%8E%D8%AD%D9%92%D9%85%D9%8E%D8%A9%D9%8F%20%D8%A7%D9%84%D9%84%D9%87%D9%90%20%D9%88%D9%8E%D8%A8%D9%8E%D8%B1%D9%8E%D9%83%D9%8E%D8%A7%D8%AA%D9%8F%D9%87%D9%8F%20%0A%0ATanpa%20mengurangi%20rasa%20hormat%2C%20perkenankan%20kami%20mengundang%20Bapak%2FIbu%2FSaudara%2Fi%20untuk%20menghadiri%20acara%20pernikahan%20kami%3A%0A%0A%F0%9F%A4%B4%F0%9F%8F%BB%20Dwika%20Nove%20Rahmanto%2C%20S.T%0A%F0%9F%AB%85%F0%9F%8F%BC%20Erna%20Sari%20Susanti%2C%20S.Sos%0A%0ABerikut%20link%20undangan%20kami%2C%20untuk%20info%20lengkap%20dari%20acara%20bisa%20kunjungi%20%3A%0A%0Ahttps%3A%2F%2Fdwikanov.github.io%2Fnikahan%2F%3Fname%3D"
@@ -154,11 +155,6 @@ Erna & Dwika`;
                     alert('Gagal menyalin pesan. Silakan coba lagi.');
                 });
         });
-        function formatNomor(input) {
-            let nomor = input.value;
-            nomor = nomor.replace(/^\+62/, '0');
-            input.value = nomor;
-        }
 
         function encodeSpaces(str) {
             // Mengganti semua spasi dengan %20
